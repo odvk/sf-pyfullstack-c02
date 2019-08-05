@@ -451,4 +451,50 @@ for event in events:
         print("pageViewId = ", event["pageViewId"])
 
 
+#-------------------- РАЗБОР ЗАДАНИЯ ОТ КУРАТОРОВ ---------------------------------------
+
+# 2.1: общее число каждого типа
+event_types = {"itemViewEvent": 0, "itemBuyEvent": 0}
+for event in events:
+    event_type = event["eventType"]
+    event_types[event_type] += 1
+
+print("События:")
+for key, value in event_types.items():
+    print(key, "встречается", value, "раз")
+
+# 2.2 проверка на дубли
+has_doubles = False
+for event in events:
+    has_doubles = event["detectedDuplicate"]
+print("Есть дубликаты?", has_doubles)
+
+# 2.3 первое по времени событие
+minimal_timestamp = events[0]["timestamp"]
+for event in events:
+    timestamp = event["timestamp"]
+    if timestamp < minimal_timestamp:
+        minimal_timestamp = timestamp
+
+for event in events:
+    if event["timestamp"] == minimal_timestamp:
+        print("Минимальный timestamp = ", minimal_timestamp)
+        session_id = event["sessionId"]
+        print("sessionId этого события:", session_id)
+
+# 2.4 общая сумма всех продуктов, которые просматривали
+total_view_sum = 0
+total_sum = 0
+for event in events:
+    total_sum += event["item_price"]
+    if event["eventType"] == "itemBuyEvent":
+        total_view_sum += event["item_price"]
+print("Общая сумма всех просмотренных продуктов:", total_view_sum)
+print("Общая сумма всех цен во всех событиях:", total_sum)
+
+# 2.5 первое для сессии событие
+for event in events:
+    if event["firstInSession"]:
+        pageViewId = event["pageViewId"]
+        print("Первое событие в сесси имеет pageViewId", pageViewId)
 

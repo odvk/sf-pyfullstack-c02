@@ -94,7 +94,6 @@ print("""Средняя длина: %s
     Средняя ширина: %s
     Средняя длина лепестков: %s""" % (mean_sepal_length, mean_sepal_width, mean_petal_length))
 
-
 # ------Вариант 4
 s_l = []
 s_w = []
@@ -105,6 +104,27 @@ for fl in flowers.values():
     s_w += fl['sepal_width']
     p_l += fl['petal_length']
 
-print(sum(s_l)/len(s_l))
-print(sum(s_w)/len(s_w))
-print(sum(p_l)/len(p_l))
+print(sum(s_l) / len(s_l))
+print(sum(s_w) / len(s_w))
+print(sum(p_l) / len(p_l))
+
+# ------ Вариант 5. Разбор задания от кураторов
+print("Вариант 5. Разбор задания от кураторов")
+sepal_length_list = []
+sepal_width_list = []
+petal_length_list = []
+
+for flower, data in flowers.items():
+    for length in data["sepal_length"]:
+        sepal_length_list.append(length)
+
+    for width in data["sepal_width"]:
+        sepal_width_list.append(width)
+
+    for length in data["petal_length"]:
+        petal_length_list.append(length)
+
+mean_sepal_length = sum(sepal_length_list) / len(sepal_length_list)
+mean_sepal_width = sum(sepal_width_list) / len(sepal_width_list)
+mean_petal_length = sum(petal_length_list) / len(petal_length_list)
+print(round(mean_sepal_length, 1), round(mean_sepal_width, 1), round(mean_petal_length, 1))
