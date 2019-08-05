@@ -5,14 +5,17 @@ my_dict = {"food": "Spam",
            "color": "invisible color"}
 
 print(my_dict["food"])
+print("---------")
 
 # Значение, доступное по ключу, можно изменять.
 my_dict["quantity"] = my_dict["quantity"] + 1
 print(my_dict["quantity"])
+print("---------")
 
 # Чтобы завести новую пару ключ—значение, используется та же нотация квадратных скобок:
 my_dict["owner"] = "Knight"
 print(my_dict)
+print("---------")
 
 # Чтобы создать пустой словарь, используют пустые фигурные скобки:
 my_new_dict = {}
@@ -21,9 +24,14 @@ my_new_dict = {}
 for number in range(5):
     my_new_dict[number] = str(number)
 print(my_new_dict)
+print(my_new_dict.keys())
+print("---------")
+#input("Введите любой символ: ")
 
 # Чтобы посмотреть, какие ключи есть в словаре, используют метод .keys():
 print(my_dict.keys())
+print("---------")
+#input("Введите любой символ: ")
 
 # Мы видим, что нам вернулся список ключей, обёрнутый в dict_keys(). На самом деле это другой тип данных,
 # похожий на список, но не являющийся им в строгом смысле.
