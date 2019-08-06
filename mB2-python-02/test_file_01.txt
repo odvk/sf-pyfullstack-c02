@@ -1,0 +1,3 @@
+Hello, world!
+I know how to write this line to a file with Python
+Эта строка написана на русском языке
