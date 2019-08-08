@@ -5,9 +5,12 @@
 import json
 
 # создаем словарь с данными пользователя
-user = {"name": "Monty Python", "gender": "male", "age": 24}
+user = {"name": "Monty Python",
+        "gender": "male",
+        "age": 24}
+
 # открываем на запись файл user.txt
-file_object = open("user.txt", "w")
+file_object = open("user01.txt", "w")
 # сохраняем словарь user в объект файла file_object
 json.dump(user, file_object)
 # закрываем объект файла
