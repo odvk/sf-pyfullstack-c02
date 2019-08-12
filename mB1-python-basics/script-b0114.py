@@ -36,6 +36,8 @@ mean_sepal_width = 0
 # общее среднее значение для petal_length:
 mean_petal_length = 0
 
+print(flowers['iris_virginica']['sepal_width'])
+
 # ------Вариант 1
 sepal_length_list = []
 sepal_width_list = []
