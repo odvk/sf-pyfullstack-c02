@@ -69,14 +69,12 @@ item_price_sum = 0
 
 for event in events_list:
     if not event['detectedDuplicate'] and not event['detectedCorruption']:
-        if event['userAgentName']:
-            user_agent_name_counter[event['userAgentName']] += 1  # считаем количество вхождений для каждого userAgentName
-        if event['item_price'] and event['eventType'] == 'itemBuyEvent':
-            item_price_sum += float(event['item_price'])  # считаем общую сумму покупок
-        if event['item_id']:
-            item_id_counter[event['item_id']] += 1  # считаем количество вхождений товаров
-            if event['eventType'] == 'itemFavEvent':
-                item_id_favorite_counter[event['item_id']] += 1  # считаем количество вхождений товаров, которые были добавлены в избранное
+        user_agent_name_counter[event['userAgentName']] += 1  # считаем количество вхождений для каждого userAgentName
+        if event['eventType'] == 'itemBuyEvent':
+            item_price_sum += event['item_price']  # считаем общую сумму покупок
+        item_id_counter[event['item_id']] += 1  # считаем количество вхождений товаров
+        if event['eventType'] == 'itemFavEvent':
+            item_id_favorite_counter[event['item_id']] += 1  # считаем количество вхождений товаров, которые были добавлены в избранное
 
 # список топ браузеров по использованию
 print("\nСписок ТОП наиболее используемых агентов")
