@@ -21,7 +21,7 @@ fp.close()
 # Вопрос 1, Вопрос 2 ----------------
 # подсчитать количество запросов от ip
 counter = collections.defaultdict(int)
-ip =['79.136.245.135', '127.0.0.1']
+ip = ['79.136.245.135', '127.0.0.1']
 
 for line in text_lines:
     if ip[0] in line:
@@ -48,12 +48,12 @@ for ip, cnt in counter_ip.most_common(10):
     print("{} -- {}".format(ip, cnt))
 
 average_requests_qty = sum(counter_ip.values()) / len(counter_ip.values())
-print("Среднее количество запросов от ip: ", round(average_requests_qty,2))
+print("Среднее количество запросов от ip: ", round(average_requests_qty, 2))
 
-#Максимальное значение и его ключ
+# Максимальное значение и его ключ
 print("Max запросов: ", max(counter_ip.values()))
-print("Ключ для max запросов", max(counter_ip, key=counter_ip.get)) # Ключ Get dict key by max value
+print("Ключ для max запросов", max(counter_ip, key=counter_ip.get))  # Ключ Get dict key by max value
 
-#Максимальное значение и его ключ
+# Минимальное значение и его ключ
 print("Min запросов: ", min(counter_ip.values()))
-print("Ключ для min запросов (первый)", min(counter_ip, key=counter_ip.get)) # Ключ Get dict key by max value
+print("Ключ для min запросов (первый)", min(counter_ip, key=counter_ip.get))  # Ключ Get dict key by max value
