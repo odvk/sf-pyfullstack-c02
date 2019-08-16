@@ -50,3 +50,5 @@ print('Яблоко*2: ', (apple *2).energy())
 # А вот так мы можем посчитать энергетическую ценность завтрака из творога и двух яблок:
 breakfast = apple * 2 + tvorog_9
 print('apple * 2 + tvorog_9: ', breakfast.energy())
+
+a = apple * tvorog_9
