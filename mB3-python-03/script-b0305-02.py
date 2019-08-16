@@ -1,10 +1,10 @@
 # B3.5 Методы
 
-class Event:
-    def __init__(self, timestamp, event_type, session_id):
-        self.timestamp = timestamp
-        self.type = event_type
-        self.session_id = session_id
+# class Event:
+#     def __init__(self, timestamp, event_type, session_id):
+#         self.timestamp = timestamp
+#         self.type = event_type
+#         self.session_id = session_id
 
 
 events = [
@@ -57,4 +57,6 @@ for event in events:
     event_obj = Event()
     event_obj.init_from_dict(event)
     print(event_obj.timestamp)
+    print(event_obj.type)
+
 
