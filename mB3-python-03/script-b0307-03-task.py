@@ -19,19 +19,23 @@
 
 
 class NutritionInfo:
-    def __init__(self, proteins, carbs, fats):
+    def __init__(self, proteins=0, carbs=0, fats=0):
         self.proteins = proteins
         self.carbs = carbs
         self.fats = fats
 
     def __mul__(self, other):
-        return NutritionInfo(self.proteins * 2, self.carbs * 2, self.fats * 2)
+        if isinstance(other, self.__class__): # если передаем оба класса, то перемножаем поатрибутно
+            return self.__class__(self.proteins * other.proteins, self.carbs * other.carbs)
+        return self.__class__(self.proteins * other, self.carbs * other, self.fats * other)
 
     def __rmul__(self, other):
-        return NutritionInfo(self.proteins * 2, self.carbs * 2, self.fats * 2)
+        return self.__class__(self.proteins * other, self.carbs * other, self.fats * other)
 
     def __add__(self, other):
-        return NutritionInfo(self.proteins + other.proteins, self.carbs + other.carbs, self.fats + other.fats)
+        return self.__class__(self.proteins + other.proteins, self.carbs + other.carbs, self.fats + other.fats)
+    def __str__(self):
+        return 'p={}, c={}, f={}'.format(self.proteins, self.carbs, self.fats)
 
     def energy(self):
         return int(self.fats * 9 + (self.carbs + self.proteins) * 4.2)
@@ -42,13 +46,19 @@ class NutritionInfo:
 tvorog_9 = NutritionInfo(18, 3, 9)
 apple = NutritionInfo(0, 25, 0)
 
+print("apple: ", apple)
+
 print('Творог: ', tvorog_9.energy())
 print('Яблоко: ', apple.energy())
 
-print('Яблоко*2: ', (apple *2).energy())
+print('Яблоко*2, 2*Яблоко:', (apple *2).energy(), ",", (2* apple).energy()) # тестируем левое и правое умножение
 
 # А вот так мы можем посчитать энергетическую ценность завтрака из творога и двух яблок:
 breakfast = apple * 2 + tvorog_9
 print('apple * 2 + tvorog_9: ', breakfast.energy())
 
-a = apple * tvorog_9
+#a = NutritionInfo()
+apple_tvorog = apple * tvorog_9
+print('apple * tvorog_9: ', apple_tvorog.energy())
+
+print("apple_tvorog: ", apple_tvorog)
